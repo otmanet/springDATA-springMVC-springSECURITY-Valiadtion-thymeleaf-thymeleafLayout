@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout">
+<head>
+<meta charset="ISO-8859-1">
+<title>Edit Product</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<div class="container">
+			<div class="card  d-flex p-2 mt-3 w-50">
+				<div class="border-bottom p-3 bg-success">
+					<h5 class="card-title">Edit Product</h5>
+				</div>
+				<form th:action="@{/saveProduct}" method="post">
+					<input type="hidden" name="id_pro" th:value="${product.id_pro}">
+					<div class="form-group">
+						<label class="control-label">Designation </label> <input
+							class="form-control" type="text" name="desgination"
+							th:value="${product.desgination}" /> <span class="error"
+							th:errors="${product.desgination}"></span>
+					</div>
+					<div class="form-group">
+						<label class="control-label">Prix </label> <input
+							class="form-control" type="text" name="prix"
+							th:value="${product.prix}" /> <span class="error"
+							th:errors="${product.prix}"></span>
+					</div>
+					<div class="form-group">
+						<label class="control-label">Quantite </label> <input
+							class="form-control" type="text" name="quantite"
+							th:value="${product.quantite}" /> <span class="error"
+							th:errors="${product.quantite}"></span>
+					</div>
+
+					<input class="btn btn-primary" type="submit" value="Save" />
+
+
+				</form>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

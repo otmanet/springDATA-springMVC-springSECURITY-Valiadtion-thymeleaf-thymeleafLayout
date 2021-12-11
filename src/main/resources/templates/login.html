@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>Authentication</title>
+</head>
+<body style="background-image: url('../css/product.jpg')">
+	<div layout:fragment="content" >
+		<div class="container" style="display: flex;justify-content: center;" >
+			<div class="card w-50 m-3">
+				<div class="border-bottom p-3 bg-primary">
+					<h5>Login</h5>
+				</div>
+				<div class="card-item">
+					<form th:action="@{login}" method="post">
+					<div class="text-danger" th:if="${param.error}"> Bad Credentials</div>
+					<div th:if="${param.logout}">
+			           You have been logged out.</div>
+						<h2 class="form-signin-heading">Please sign in</h2>
+						<div class="form-group">
+							<label class="control-label">Username :</label> <input
+								type="text" id="username" name="username" class="form-control"
+								placeholder="Username" required autofocus>
+						</div>
+						<div class="form-group">
+							<label class="control-Label">Password :</label> <input
+								type="password" id="password" name="password"
+								class="form-control" placeholder="Password" required>
+						</div>
+
+						<button type="submit" class="btn btn-primary m-1">Login</button>
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

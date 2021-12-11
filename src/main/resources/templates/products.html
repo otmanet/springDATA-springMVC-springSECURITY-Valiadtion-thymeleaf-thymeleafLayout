@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>Page Products</title>
+
+
+</head>
+<body>
+
+	<div layout:fragment="content">
+		<div class="container">
+			<div class="card d-flex p-2 mt-3">
+				<div class=" border-bottom  bg-warning p-3">
+					<h5 class="card-title">List Product</h5>
+					<form class="form-inline" th:action="@{/product/index}"
+						method="get" style="display: flex; float: right">
+						<input type="search" class="form-control" name="mc"
+							placeholder="Mot Cle..." aria-label="Search" th:value="${mc}">
+						<Button class="btn btn-outline-success" type="Submit"
+							value="recherhe">Search</Button>
+					</form>
+				</div>
+
+				<div class="card-body">
+
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>DES</th>
+								<th>PRIX</th>
+								<th>QUANTITE</th>
+								<th sec:authorize="hasRole('ADMIN')"></th>
+								<th sec:authorize="hasRole('ADMIN')"></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="p:${pageProduit.content}">
+								<td th:text="${p.id_pro}"></td>
+								<td th:text="${p.desgination}"></td>
+								<td th:text="${p.prix}"></td>
+								<td th:text="${p.quantite}"></td>
+								<td sec:authorize="hasRole('ADMIN')"><a
+									onclick="return confirm('are you sure do want deleted this product')"
+									th:href="@{/admin/delete(id=${p.id_pro},mc=${mc},page=${pageCourante},size=${size})}"
+									class="btn btn-outline-danger">Delete</a></td>
+								<td sec:authorize="hasRole('ADMIN')"><a
+									th:href="@{/admin/edit(id=${p.id_pro})}"
+									class="btn btn-outline-success">Edit</a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div aria-label="Page navigation example">
+					<ul class="pagination">
+
+					</ul>
+				</div>
+				<nav aria-label="...">
+					<ul class="pagination pagination-sm" th:each="pa,status:${pages}"
+						style="display: inline-block">
+						<li class="page-item"
+							th:class="${pageCourante}==${status.index}? 'active': ''"><a
+							class="page-link"
+							th:href="@{/product/index/(mc=${mc},page=${status.index},size=${size})}"
+							th:text="${status.index}"></a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

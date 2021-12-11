@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout">
+<head>
+<meta charset="ISO-8859-1">
+<title>Configuration</title>
+
+</head>
+<body>
+
+	<div layout:fragment="content">
+		<div class="container">
+			<div class="card d-flex p-2 m-3 w-50">
+				<div class="borrder-bottom p-3 bg-warning">
+					<h5 class="title-card">Configuration</h5>
+				</div>
+				<div class="form-group">
+					<label class="control-label">ID : </label> <label
+						class="control-label" th:text="${product.id_pro}"></label>
+				</div>
+				<div class="form-group">
+					<label class="control-label">DES :</label> <label
+						class="control-label" th:text="${product.desgination}"></label>
+				</div>
+				<div class="form-group">
+					<label class="control-label">RPIX :</label> <label
+						class="control-label" th:text="${product.prix}"></label>
+				</div>
+				<div class="form-group">
+					<label class="control-label">QUANTITE : </label> <label
+						class="control-label" th:text="${product.quantite}"></label>
+				</div>
+				<a href="/product/index" class="btn btn-danger">Return Home</a>
+			</div>
+
+		</div>
+	</div>
+
+</body>
+</html>
