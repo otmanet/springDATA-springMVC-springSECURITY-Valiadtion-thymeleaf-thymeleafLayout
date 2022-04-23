@@ -50,7 +50,6 @@ public class ProductController {
 		model.addAttribute(product);
 		return "formProduct";
 	}
-
 	@RequestMapping(value = "/saveProduct", method = RequestMethod.POST)
 	public String saveProduct(@Valid @ModelAttribute("product") Product product, BindingResult errors) {
 

@@ -26,7 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		PasswordEncoder passEncoder = passwordEncoder();
-	   System.out.println("**************************");
+	    System.out.println("**************************");
 		System.out.println(passEncoder.encode("1234"));
 		System.out.println("*************************");
 	   
